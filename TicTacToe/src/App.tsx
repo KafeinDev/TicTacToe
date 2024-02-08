@@ -23,17 +23,25 @@ function Row() {
     squares[i] = Square();
   }
 
-  return <div className="row">{squares}</div>;
+  return <div className="board-row">{squares}</div>;
 }
 
 function Square() {
-  const [state, setState] = useState(false);
+  const [value, setValue] = useState<null | string>(null);
 
-  function handleClick(props: Props) {
-    setState(!state);
+  function handleClick() {
+    if (value != null) {
+      return;
+    }
+
+    setValue("X");
   }
 
-  return <button className="square" onClick={handleClick}></button>;
+  return (
+    <button className="square" onClick={handleClick}>
+      {value}
+    </button>
+  );
 }
 
 export default App;
