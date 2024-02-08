@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 function App() {
   return (
     <>
@@ -25,7 +27,13 @@ function Row() {
 }
 
 function Square() {
-  return <button className="square">{}</button>;
+  const [state, setState] = useState(false);
+
+  function handleClick(props: Props) {
+    setState(!state);
+  }
+
+  return <button className="square" onClick={handleClick}></button>;
 }
 
 export default App;
